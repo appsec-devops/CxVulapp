@@ -1,17 +1,22 @@
-name: Checkmarx One Scan
+name: Checkmarx AST Scan
+
 on:
-  push:
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 jobs:
-  build:
+  checkmarx-ast-scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Checkmarx One CLI Action
-        uses: checkmarx/ast-github-action@main #Github Action version
-        with:
-          cx_tenant: nfr_optiv
-          base_uri: https://ast.checkmarx.net
-          cx_client_id: ${{ secrets.CX_CLIENT_ID }}
-          cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Checkmarx AST Scan
+      uses: Checkmarx/ast-github-action@2.0.18
+      with:
+        base_uri: https://ast.checkmarx.net
+        cx_tenant: nfr_optiv
+        cx_client_id: ${{ secrets.CX_CLIENT_ID }}
+        cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
+        project_name: CxVedant
+        github_token: ${{ secrets.GITHUB_TOKEN }}
