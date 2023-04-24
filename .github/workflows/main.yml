@@ -21,3 +21,5 @@ jobs:
         cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
         project_name: CxVedant
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        debug: true
+
