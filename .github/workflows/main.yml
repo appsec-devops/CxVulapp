@@ -1,11 +1,12 @@
 name: Checkmarx AST Scan
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+  push:
+    branches:
+      - main
 
 jobs:
-  checkmarx-ast-scan:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
