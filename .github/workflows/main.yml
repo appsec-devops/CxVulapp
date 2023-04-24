@@ -17,9 +17,7 @@ jobs:
       with:
         base_uri: https://ast.checkmarx.net
         cx_tenant: nfr_optiv
-        cx_client_id: ${{ secrets.CX_CLIENT_ID }}
-        cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
+        cx_client_id: ${{ secrets.CLIENT_ID }}
+        cx_client_secret: ${{ secrets.CLIENT_SECRET }}
         project_name: CxVedant
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        debug: true
-
